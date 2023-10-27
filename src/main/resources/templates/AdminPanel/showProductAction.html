@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product: ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.productType.name}"></td>
+        <td>
+            <a th:href="@{/adminPanel/delete/{id}(id=${product.id})}" th:text="Delete"></a>
+        </td>
+        <td>
+            <a th:href="@{/adminPanel/update/{id}(id=${product.id})}" th:text="Update"></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

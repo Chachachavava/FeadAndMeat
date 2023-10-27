@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Customer</th>
+    </tr>
+    </thead>
+    <tbody th:each="orderList: ${orders}">
+        <tr th:each="order: ${orderList.getOrders()}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.items}"></td>
+            <td th:text="${orderList.getCustomer()}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

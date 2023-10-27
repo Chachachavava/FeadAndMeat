@@ -1,0 +1,137 @@
+    body{
+      margin:0;
+      border-top:5px solid #b97a57;
+      background:#dff3f9;
+    }
+    nav a{
+      text-decoration:none
+    }
+    nav ul{
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction: row;
+      background:#ebdacf;
+      justify-content: space-evenly;
+    }
+    nav li{
+      list-style-position:inside;
+      font:14px 'Geologica',sans-serif;
+      padding:10px;
+      
+    }
+    .top-menu li{
+      display:inline-block;
+      padding:10px 50px;
+      
+    }
+    .top-menu li.active{
+      background: #542d18;
+      color:#dff3f9
+    }
+    .top-menu a{
+      color:#542d18
+    }
+    #heading{
+      border:4px solid #b97a57;
+    }
+    p{
+      font:14px 'Geologica',sans-serif;
+      margin:15px
+    }
+    img{
+      display: block;
+      margin: auto;
+      border:3px solid #542d18;
+    }
+    footer{
+      background:#542d18;
+      border-top:1px solid #000;
+      font:12px 'Geologica',sans-serif;
+    }
+    h3{
+      margin:auto;
+      padding:20px
+    }
+    #wrapper{
+      max-width:960px;
+      height:10px;
+      margin:auto;
+      background:#000;
+    }
+    #Product{
+        padding: 15px;
+        max-width: 1000px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        position: relative;
+    }
+    .productWindow{
+        width: 300px;
+        height: 300px;
+        background-color: #e8e8e8;
+        border: 3px solid #b97a57;
+        padding: 22px;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    img{
+        width: 150px;
+        height: 150px;
+    }
+    .add{
+        background: #b97a57;
+        text-decoration:none;
+        font:20px 'Geologica',sans-serif;
+        color: black;
+    }
+    table{
+        background: #b97a57;
+        margin:5px;
+        padding: 5px;
+    }
+    th{
+        background: #e8e8e8;
+        font:20px 'Geologica',sans-serif;
+        border: 3px solid #542d18;
+        padding: 5px;
+    }
+    td{
+        background: #e8e8e8;
+        font:20px 'Geologica',sans-serif;
+        border: 3px solid #542d18;
+        padding: 5px;
+    }
+    td>a{
+        text-decoration:none;
+        color: black;
+        margin: 10px;
+    }
+    .hidden{
+        display: none;
+    }
+    .buy{
+        text-decoration:none;
+        color: black;
+        background: #e8e8e8;
+        border: 3px solid #542d18;
+        font:20px 'Geologica',sans-serif;
+        padding: 5px;
+    }
+    #buy{
+        padding: 10px;
+    }
+    span{
+        color: black;
+        font:20px 'Geologica',sans-serif;
+    }
+  @media screen and (max-width: 735px) {
+    nav ul{
+      flex-direction: column;
+    }
+  }

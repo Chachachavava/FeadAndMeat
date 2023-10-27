@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Whitesquare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+    <nav>
+        <ul class="top-menu">
+            <li><a href ="/home">Головна</a></li>
+            <li><a href ="/about">Про нас</a></li>
+            <li><a href ="/catalog/meat">Каталог м'яса</a></li>
+            <li><a href ="/catalog/feed">Каталог кормів</a></li>
+            <li class ="active">Кошик</li>
+        </ul>
+    </nav>
+    <div id="heading">
+        <table>
+            <thead>
+            <tr>
+                <th>Ім'я товару</th>
+                <th>Кількість</th>
+                <th class="hidden"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item: ${items}">
+                <td th:text="${item.getProduct().name}"></td>
+                <td ><a th:href="@{/cart/plus/{id}(id=${item.id})}">+</a><a th:text="${item.quantity}"></a><a th:href="@{/cart/minus/{id}(id=${item.id})}">-</a></td>
+                <td>
+                    <a th:href="@{/cart/delete/{id}(id=${item.id})}">Прибрати</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="buy"><a class="buy" th:href="@{/order}" >Замовити</a></div>
+    </div>
+    <footer>
+        <h3>© 2023 Магазин «abc»</h3>
+        <h3>Телефон +380123456789</h3>
+    </footer>
+</div>
+</body>
+</html>

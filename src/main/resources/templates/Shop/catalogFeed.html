@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Whitesquare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+    <nav>
+        <ul class="top-menu">
+            <li><a href ="/home">Головна</a></li>
+            <li><a href ="/about">Про нас</a></li>
+            <li><a href ="/catalog/meat">Каталог м'яса</a></li>
+            <li class ="active">Каталог кормів</li>
+            <li><a href ="/cart">Кошик</a></li>
+        </ul>
+    </nav>
+    <div id="heading">
+        <p>Quisque vel malesuada dui, vel condimentum dolor. Sed semper purus quis elit varius, eget tincidunt libero interdum. Donec at dolor in sapien interdum viverra. Donec ut maximus leo. In eleifend, ligula eu varius sagittis, nulla felis faucibus felis, non pulvinar sem mi et augue. Duis quis velit sed mauris tristique vehicula. Praesent blandit sem eget est aliquet, ac luctus nulla pharetra. Pellentesque accumsan viverra neque ac porttitor. Nullam feugiat semper congue. Curabitur at mi dictum, volutpat metus pulvinar, tempus lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent nec tincidunt dui.</p>
+
+        <div id="Product">
+            <div class="productWindow" th:each="product: ${products}">
+                <span th:text="${product.name}"></span>
+                <img th:src="@{${'/uploads/'+product.getName()+'.png'}}">
+                <span th:text="'Ціна :'  +${product.price} +'грн'"></span>
+                <a class="add" th:href="@{/cart/add/{id}(id=${product.id})}" th:text="Add"></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h3>© 2023 Магазин «abc»</h3>
+        <h3>Телефон +380123456789</h3>
+    </footer>
+</div>
+</body>
+</html>

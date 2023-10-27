@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
+<h1>Реєстрація</h1>
+<form th:action="@{/register}" method="post">
+    <div>
+        <div>
+            <div>
+                <label for="username">first Name</label>
+                <input id="username" th:field="${user.username}" />
+                <span class="error" th:if="${#fields.hasErrors('user.username')}" th:errors="${user.username}"></span>
+            </div>
+            <div>
+                <label for="password">first Name</label>
+                <input id="password" th:field="${user.password}" />
+                <span class="error" th:if="${#fields.hasErrors('user.password')}" th:errors="${user.password}"></span>
+            </div>
+            <div>
+                <label for="phoneNumber">first Name</label>
+                <input id="phoneNumber" th:field="${user.phoneNumber}" />
+                <span class="error" th:if="${#fields.hasErrors('user.phoneNumber')}" th:errors="${user.phoneNumber}"></span>
+            </div>
+            <div>
+                <label for="email">first Name</label>
+                <input id="email" th:field="${user.email}" />
+                <span class="error" th:if="${#fields.hasErrors('user.email')}" th:errors="${user.email}"></span>
+            </div>
+        </div>
+    </div>
+    <button type="submit">Додати курс</button>
+</form>
+</body>
+</html>
