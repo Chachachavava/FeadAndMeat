@@ -25,7 +25,7 @@
         <div id="Product">
             <div class="productWindow" th:each="product: ${products}">
                     <span th:text="${product.name}"></span>
-                    <img th:src="@{${'/uploads/'+product.getName()+'.png'}}">
+                    <img th:src="@{${'/'+product.getName()+'.png'}}">
                     <span th:text="'Ціна :'  +${product.price} +' грн'"></span>
                     <a class="add" th:href="@{/cart/add/{id}(id=${product.id})}">Додати до кошику</a>
             </div>

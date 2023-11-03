@@ -130,6 +130,57 @@
         color: black;
         font:20px 'Geologica',sans-serif;
     }
+    #addCategory{
+        margin: 20px 10px 10px;
+    }
+    #addProduct{
+        margin: 10px;
+    }
+    form{
+        margin: 50px;
+    }
+    input{
+        font:20px 'Geologica',sans-serif;
+        background: #b97a57;
+        border-color:#542d18;
+    }
+    button{
+        margin-top:10px;
+        background: #b97a57;
+        border-color:#542d18;
+        font:20px 'Geologica',sans-serif;
+    }
+    h1{
+        font:25px 'Geologica',sans-serif;
+    }
+    input[type="file"]::file-selector-button {
+        background: #b97a57;
+        font:25px 'Geologica',sans-serif;
+        margin-right: 10px;
+    }
+    .form-group{
+        margin-top: 10px;
+    }
+    select{
+        font:25px 'Geologica',sans-serif;
+        background: #b97a57;
+        border-color: #542d18;
+    }
+    .logout li{
+        list-style-type:none;
+    }
+    .logout li a{
+        text-decoration:none;
+        font:20px 'Geologica',sans-serif;
+        color: black;
+    }
+
+    label{
+        font:20px 'Geologica',sans-serif;
+    }
+    .reg{
+        display: grid;
+    }
   @media screen and (max-width: 735px) {
     nav ul{
       flex-direction: column;

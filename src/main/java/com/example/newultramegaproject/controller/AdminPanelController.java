@@ -1,7 +1,9 @@
 package com.example.newultramegaproject.controller;
 
+import com.example.newultramegaproject.domain.CustomerOrder;
 import com.example.newultramegaproject.domain.Product;
 import com.example.newultramegaproject.domain.ProductType;
+import com.example.newultramegaproject.repository.CustomerOrderRepository;
 import com.example.newultramegaproject.repository.OrderListRepository;
 import com.example.newultramegaproject.repository.ProductRepository;
 import com.example.newultramegaproject.repository.ProductTypeRepository;
@@ -30,7 +32,8 @@ public class AdminPanelController {
     private final ProductService productService;
     private final ProductRepository productRepository;
     private final OrderListRepository orderListRepository;
-    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/src/main/resources/static/uploads";
+    private final CustomerOrderRepository customerOrderRepository;
+    public static String UPLOAD_DIRECTORY = "C:\\Users\\nnpis\\Downloads\\upload";
 
     @GetMapping
     public String showProduct(Model model){
@@ -47,6 +50,19 @@ public class AdminPanelController {
             log.info("No element with order list");
         }
         return "AdminPanel/order";
+    }
+    @GetMapping("/order/{id}")
+    public String order(@PathVariable Long id,Model model){
+        Optional<CustomerOrder> order = customerOrderRepository.findById(id);
+        if(order.isPresent()) {
+            model.addAttribute("items",order.get().getItems());
+            return "AdminPanel/orderView";
+        }else {
+            log.info("Order with id = "+id+" not found");
+            model.addAttribute("error","order is not found");
+            return "error";
+        }
+
     }
     @GetMapping("/addProduct")
     public String addProduct(Model model){
@@ -85,11 +101,6 @@ public class AdminPanelController {
         productTypeRepository.save(productType);
         log.info("Product type save : "+productType);
         return "redirect:/adminPanel/addProductType";
-    }
-    @GetMapping("/delete")
-    public String delete(Model model){
-        model.addAttribute("products",productRepository.findAll());
-        return "AdminPanel/delete";
     }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id,Model model){

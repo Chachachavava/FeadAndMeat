@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta name="robots" content="noindex">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Whitesquare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Customer</th>
-    </tr>
-    </thead>
-    <tbody th:each="orderList: ${orders}">
-        <tr th:each="order: ${orderList.getOrders()}">
-            <td th:text="${order.id}"></td>
-            <td th:text="${order.items}"></td>
-            <td th:text="${orderList.getCustomer()}"></td>
-        </tr>
-    </tbody>
-</table>
+<div id="wrapper">
+    <nav>
+        <ul class="top-menu">
+            <li><a href ="/adminPanel">Продукти</a></li>
+            <li class ="active">Замовлення</li>
+        </ul>
+    </nav>
+    <div id="heading">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Info</th>
+            </tr>
+            </thead>
+            <tbody th:each="orderList: ${orders}">
+            <tr th:each="order: ${orderList.getOrders()}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${orderList.getCustomer().username+' '+orderList.getCustomer().phoneNumber+' '+orderList.getCustomer().email}"></td>
+                <td><a th:href="@{/adminPanel/order/{id}(id=${order.id})}" th:text="Info"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <h3>© 2023 Магазин «abc»</h3>
+        <h3>Телефон +380123456789</h3>
+    </footer>
+</div>
 </body>
 </html>
