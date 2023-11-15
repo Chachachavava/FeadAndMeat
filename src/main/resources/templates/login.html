@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@500&display=swap" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Вхід</h1>
+<div class="logout"><li><a href="/register">Заєреструватись</a></li></div>
+<form th:action="@{/login}" method="post">
+    <div>
+        <div>
+            <div th:if="${param.error}">
+                Invalid username and password.</div>
+            <div th:if="${param.logout}">
+                You have been logged out.</div>
+            <div class="reg">
+                <label>Ім'я</label>
+                <input type="text" name="username" placeholder="Ім'я"/>
+            </div>
+            <div class="reg">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="Пароль"/>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Вхід">
+</form>
+</body>
+</html>

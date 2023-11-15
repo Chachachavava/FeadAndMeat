@@ -27,10 +27,14 @@ public class CustomerController {
     }
     @PostMapping("/register")
     public String registerPost(Customer user) {
-        user.addRole(roleRepository.getById(1L));
+        user.addRole(roleRepository.getById(2L));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "redirect:/home";
+        return "redirect:/login";
+    }
+    @GetMapping("/login")
+    public String login(){
+        return "login";
     }
 
 }

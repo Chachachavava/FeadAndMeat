@@ -3,6 +3,9 @@
       border-top:5px solid #b97a57;
       background:#dff3f9;
     }
+    div{
+        font:14px 'Geologica',sans-serif;
+    }
     nav a{
       text-decoration:none
     }
@@ -180,6 +183,10 @@
     }
     .reg{
         display: grid;
+    }
+    h3 a{
+        text-decoration: none;
+        color: black;
     }
   @media screen and (max-width: 735px) {
     nav ul{

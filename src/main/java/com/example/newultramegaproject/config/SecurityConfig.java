@@ -30,7 +30,7 @@ public class SecurityConfig {
                                 .anyRequest().permitAll()
                 )
                 .userDetailsService(userDetailsService)
-                .formLogin(withDefaults())
+                .formLogin(form -> form.loginPage("/login").permitAll())
                 .build();
     }
 }

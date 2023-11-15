@@ -1,7 +1,9 @@
 package com.example.newultramegaproject.init;
 
+import com.example.newultramegaproject.domain.ProductType;
 import com.example.newultramegaproject.domain.Role;
 import com.example.newultramegaproject.domain.Customer;
+import com.example.newultramegaproject.repository.ProductTypeRepository;
 import com.example.newultramegaproject.repository.RoleRepository;
 import com.example.newultramegaproject.repository.CustomerRepository;
 import com.example.newultramegaproject.service.CustomerService;
@@ -15,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class InitDatabase implements CommandLineRunner {
     private final RoleRepository roleRepository;
-    private final CustomerRepository userRepository;
+    private final ProductTypeRepository productTypeRepository;
     private final PasswordEncoder passwordEncoder;
     private final CustomerService customerService;
 
@@ -33,5 +35,7 @@ public class InitDatabase implements CommandLineRunner {
         admin.addRole(roleAdmin);
         customerService.save(user);
         customerService.save(admin);
+        productTypeRepository.save(new ProductType("М'ясо"));
+        productTypeRepository.save(new ProductType("Корма"));
     }
 }
