@@ -22,4 +22,5 @@ public class Product {
     @NotNull
     @ManyToOne
     private ProductType productType;
+    private boolean invisible;
 }

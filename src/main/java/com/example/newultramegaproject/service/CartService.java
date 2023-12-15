@@ -23,6 +23,9 @@ public class CartService {
         CartItem cartItem = new CartItem();
         cartItem.setProduct(product);
         cartItem.setQuantity(1);
+        System.out.println(customer.getShoppingCart());
+        System.out.println(customer);
+        System.out.println(customerRepository.findAll());
         CartItem existingCartItem = customer.getShoppingCart().find(cartItem);
         if (existingCartItem!=null){
             existingCartItem.setQuantity(existingCartItem.getQuantity()+1);

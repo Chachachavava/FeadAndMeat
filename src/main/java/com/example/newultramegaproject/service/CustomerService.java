@@ -14,7 +14,6 @@ public class CustomerService {
     private final ShoppingCartRepository shoppingCartRepository;
     private final CustomerOrderRepository customerOrderRepository;
     private final OrderListRepository ordersRepository;
-    private final CartItemRepository cartItemRepository;
 
     public Customer save(Customer customer){
         customer = customerRepository.save(customer);

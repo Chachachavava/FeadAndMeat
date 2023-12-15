@@ -2,7 +2,7 @@ package com.example.newultramegaproject.controller;
 
 import com.example.newultramegaproject.domain.Customer;
 import com.example.newultramegaproject.repository.RoleRepository;
-import com.example.newultramegaproject.repository.CustomerRepository;
+import com.example.newultramegaproject.service.CustomerService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class CustomerController {
 
-    private CustomerRepository userRepository;
+    private CustomerService customerService;
     private RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -29,7 +29,7 @@ public class CustomerController {
     public String registerPost(Customer user) {
         user.addRole(roleRepository.getById(2L));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        customerService.save(user);
         return "redirect:/login";
     }
     @GetMapping("/login")

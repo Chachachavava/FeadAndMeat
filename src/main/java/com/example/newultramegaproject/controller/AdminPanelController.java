@@ -37,7 +37,7 @@ public class AdminPanelController {
 
     @GetMapping
     public String showProduct(Model model){
-        model.addAttribute("products",productRepository.findAll());
+        model.addAttribute("products", productService.show(productRepository.findAll()));
         if(productRepository.findAll().isEmpty()){
             log.info("No element with products");
         }
@@ -107,7 +107,7 @@ public class AdminPanelController {
         Optional<Product> product = productRepository.findById(id);
         if(product.isPresent()) {
             log.info("Product delete : "+product.get());
-            productRepository.deleteById(id);
+            productService.delete(product.get());
             log.info("Delete product");
             return "redirect:/adminPanel";
         }else {
@@ -134,11 +134,13 @@ public class AdminPanelController {
     @PostMapping("/update/{id}")
     public String update(@PathVariable Long id, Product product,@RequestParam("image") MultipartFile file) throws IOException {
         product.setId(id);
+        product.setInvisible(true);
         if(!file.isEmpty()) {
             Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, product.getName() + ".png");
             Files.write(fileNameAndPath, file.getBytes());
         }
         productRepository.save(product);
+        System.out.println(productRepository.findAll());
         return "redirect:/adminPanel";
     }
 }

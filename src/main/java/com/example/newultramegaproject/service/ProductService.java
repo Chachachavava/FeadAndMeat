@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,6 +25,7 @@ public class ProductService {
     public Product save(Product product){
         Optional<ProductType> productTypeTemp = productTypeRepository.findById(product.getProductType().getId());
         if (productTypeTemp.isPresent()){
+            product.setInvisible(true);
             productRepository.save(product);
             log.info(product+" product save");
             ProductType productType = productTypeTemp.get();
@@ -32,5 +35,20 @@ public class ProductService {
             return product;
         }
         return null;
+    }
+    @Transactional
+    public List<Product> show(List<Product> products){
+        List<Product> productList = new ArrayList<>();
+        for (Product product: products) {
+            if (product.isInvisible()){
+                productList.add(product);
+            }
+        }
+        return productList;
+    }
+    public void delete(Product product){
+        product.setInvisible(false);
+        productRepository.save(product);
+
     }
 }
